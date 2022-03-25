@@ -1,9 +1,10 @@
-const { text } = require("express")
-const req = require("express/lib/request")
-const res = require("express/lib/response")
-const http = require("http")
-const querystring = require("querystring")
-const server = http.createServer((req, res) => {
+const express = require('express')
+const querystring = require('querystring')
+const app = express()
+app.get('/',(req,res)=>{
+    res.sendFile(__dirname+'/formformet.html')
+})
+app.post('/',(req, res) => {
     res.writeHead(200, ("content-type", "text/html"))
     if (req.method == "POST") {
         var postparameters = "";
@@ -24,8 +25,6 @@ const server = http.createServer((req, res) => {
         })
     }
 })
-server.listen(1230, () => {
-    console.log("server port 8520");
+app.listen(1233,()=>{
+    console.log("port listion ")
 })
-
-
